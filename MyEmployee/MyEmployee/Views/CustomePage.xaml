@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:us="clr-namespace:MyEmployee.CustomeRenderer"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyEmployee.Views.CustomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <us:MyLabel Text="Welcome to Xamarin.Forms!"  
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label x:Name="lbl" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

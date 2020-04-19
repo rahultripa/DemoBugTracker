@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:local="clr-namespace:MyEmployee.Effects" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyEmployee.Views.AddEmployee">
+    <ContentPage.Content>
+        <StackLayout  Margin="20">
+            <StackLayout Orientation="Horizontal" >
+
+                <Label Text="Name " ></Label>
+                <Entry WidthRequest="100" Text="{Binding EmployeeSelected.Name }" >
+                    <Entry.Effects>
+                        <local:FocusEffect></local:FocusEffect>
+                    </Entry.Effects>
+                </Entry>
+                
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" >
+
+                <Label Text="Department " ></Label>
+                <Entry WidthRequest="100"  Text="{Binding EmployeeSelected.Department}" >
+                    <Entry.Effects>
+                        <local:FocusEffect></local:FocusEffect>
+                    </Entry.Effects>
+                </Entry>
+
+            </StackLayout>
+            <Label Text="{Binding StatusMassege}"  TextColor="{Binding Errorcolor}" ></Label>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"  ></ActivityIndicator>
+
+            <Button Text=" Add Employee " Command="{Binding AddEmp}" ></Button>
+
+            <Button Text="Update Employee " Command="{Binding UpdateEmp}" ></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

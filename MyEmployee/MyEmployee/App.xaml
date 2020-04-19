@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:MyEmployee.DataTemplateSelector1"
+             x:Class="MyEmployee.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+      
+            <DataTemplate x:Key="validPersonTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="Gray">
+                        <Label Text="{Binding Name}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.AdvanceSearchCommand,, Source={x:Reference TestGusture}}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding Department}"></Label>
+
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="invalidPersonTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="Red">
+                        <Label Text="{Binding Name}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.AdvanceSearchCommand,, Source={x:Reference TestGusture}}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding Department}"></Label>
+
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <local:EmployeeTemplateSelector x:Key="EmployeeTemplateSelector"
+                ValidTemplate="{StaticResource validPersonTemplate}"
+                InvalidTemplate="{StaticResource invalidPersonTemplate}" />
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>

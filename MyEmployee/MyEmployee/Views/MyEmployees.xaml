@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Behavior="clr-namespace:MyEmployee.Behaviour"
+             x:Name="TestGusture"
+              xmlns:conveter="clr-namespace:MyEmployee.Converter"
+          
+             x:Class="MyEmployee.Views.MyEmployees">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conveter:ValuesConverter x:Key="ValuesConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Horizontal" Margin="20"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"  ></ActivityIndicator>
+
+                <StackLayout Orientation="Vertical" Grid.Row="0" >
+                    <Label Text="Test"  HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand"  LineBreakMode="TailTruncation" >
+                        <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AdvanceSearchCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>-->
+                    </Label>
+                    <!--<ListView x:Name="lstView"   ItemsSource="{Binding EmployeeList}" ItemTemplate="{StaticResource EmployeeTemplateSelector}"  >-->
+
+                        <ListView x:Name="lstView" HasUnevenRows="True"  ItemsSource="{Binding EmployeeList}"  >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" BackgroundColor="Gray">
+                                        <Label Text="{Binding Name}">
+                                              </Label>
+                                        <Label Text="{Binding Department}" BackgroundColor="{Binding Department,Converter={StaticResource ValuesConverter}}"></Label>
+
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Behaviors>
+                            <Behavior:ItemSelectedToCommandBehaviour></Behavior:ItemSelectedToCommandBehaviour>
+                        </ListView.Behaviors>
+                    </ListView>
+
+                </StackLayout>
+                <Button Text="Refresh " Grid.Row="1" Command="{Binding Refresh}" >
+                    <Button.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="220" />
+                            <On Platform="UWP" Value="250" />
+                            <On Platform="Android" Value="250" /> 
+                        </OnPlatform>
+                        
+                    </Button.WidthRequest>
+                   
+                </Button>
+                <Button Text="Add " Grid.Row="2" Command="{Binding GoToNextPage}" ></Button>
+
+                <!--<local:MyLabel Text="This My Label " Grid.Row="3"  ></local:MyLabel>-->
+
+
+            </Grid>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

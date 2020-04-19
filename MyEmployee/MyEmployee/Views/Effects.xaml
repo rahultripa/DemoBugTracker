@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             xmlns:local="clr-namespace:MyEmployee.Effects" 
+             x:Class="MyEmployee.Views.Effects">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Effects Demo - Focus Effect" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Entry Text="Effect attached to an Entry" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Entry.Effects>
+                    <local:FocusEffect></local:FocusEffect>
+                </Entry.Effects>
+            </Entry>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
